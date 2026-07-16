@@ -38,7 +38,7 @@ En [Releases](../../releases) encontrarás, para cada versión:
 | `VH-GridDD15-firmware-vX.Y.Z.hex` | Firmware del volante, solo para flasheo manual con STM32CubeProgrammer. |
 | `VH-Axis-pedalera-vX.Y.Z.hex` | Firmware de la pedalera, solo para flasheo manual con arduino-cli/avrdude. |
 
-## 🚀 Instalación
+## Instalación
 
 1. Descarga y ejecuta el instalador de la última release.
 2. Abre **VH Configurador**: los periféricos se detectan y conectan solos.
