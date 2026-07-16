@@ -1,0 +1,43 @@
+LICENCIA DE USO DE LOS BINARIOS DE VH SIMGRID
+
+Copyright (c) 2026 Alejandro (VH SimGrid). Todos los derechos reservados.
+
+1. Concesion. Se concede a cualquier persona una licencia gratuita, no
+   exclusiva e intransferible para descargar, instalar y usar estos binarios
+   (la aplicacion VH Configurador, el instalador y los firmwares VH Grid DD15
+   y VH Axis) exclusivamente para USO PERSONAL Y NO COMERCIAL.
+
+2. Restricciones. Sin autorizacion previa y por escrito del titular, no esta
+   permitido:
+   a) usar los binarios con fines comerciales o lucrativos de cualquier tipo:
+      venderlos, cobrar por ellos o por su instalacion o configuracion,
+      incluirlos en productos o servicios de pago, o explotar comercialmente
+      equipos que los incorporen (alquiler, centros de simracing, etc.);
+   b) redistribuir, republicar o poner los binarios a disposicion de terceros,
+      integros o modificados, por cualquier medio (webs de descargas, torrents,
+      paquetes de software, otros repositorios...);
+   c) descompilarlos o hacer ingenieria inversa, salvo en la medida en que la
+      ley lo permita expresamente.
+   Compartir el enlace a este repositorio (la descarga oficial) es libre y
+   bienvenido. Para cualquier uso comercial, contacta con el titular.
+
+3. Componentes de terceros. Los binarios incorporan componentes bajo licencia
+   MIT, cuyos avisos de copyright se conservan conforme a dicha licencia:
+   - ODrive firmware v0.4.9 (nucleo FOC): Copyright (c) 2017 ODrive Robotics
+     https://github.com/odriverobotics/ODrive
+   - TinyUSB: Copyright (c) 2018 hathach
+     https://github.com/hathach/tinyusb
+   - Descriptor HID PID derivado de OpenFFBoard
+     https://github.com/Ultrawipf/OpenFFBoard
+   Estos avisos aplican solo a dichos componentes; el resto del software es
+   propiedad exclusiva del titular.
+
+4. Sin garantia. Los binarios se entregan "TAL CUAL", sin garantia de ningun
+   tipo, expresa o implicita. Este software controla hardware DIY de force
+   feedback (motores, electronica de potencia, perifericos): el usuario lo
+   emplea bajo su exclusiva responsabilidad, y el titular no respondera, en la
+   maxima medida permitida por la ley, de ningun dano material o personal
+   derivado de su uso o instalacion.
+
+5. Extincion. Esta licencia queda revocada automaticamente en caso de
+   incumplimiento de cualquiera de sus terminos.
