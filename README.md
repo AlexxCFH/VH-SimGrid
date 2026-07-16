@@ -75,7 +75,7 @@ detector de oscilaciones.
 
 ### VH Configurador
 
-📊 Estado en vivo, ajustes en tiempo real y **perfiles por tipo de coche**
+Estado en vivo, ajustes en tiempo real y **perfiles por tipo de coche**
 (Formula, GT3, GT2, Hypercar, Rally...).
 
 **Luces de RPM en el aro**: la app lee la telemetría del juego (Assetto
