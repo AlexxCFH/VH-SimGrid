@@ -1,7 +1,4 @@
-<!-- Este fichero es el README del repo PUBLICO (VH-SimGrid).
-     Se mantiene aqui como fuente de verdad; si lo cambias, copialo alli. -->
-
-# 🏎️ VH SimGrid — Grid DD15 (volante FFB) + Axis (pedalera)
+# VH SimGrid
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/AlexxCFH/VH-SimGrid?style=for-the-badge&label=Versi%C3%B3n&color=FF073A" alt="Última versión">
