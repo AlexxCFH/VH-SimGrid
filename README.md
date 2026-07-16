@@ -1,4 +1,5 @@
-# VH SimGrid
+
+## VH SimGrid
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/AlexxCFH/VH-SimGrid?style=for-the-badge&label=Versi%C3%B3n&color=FF073A" alt="Última versión">
@@ -107,6 +108,20 @@ libre; para usos comerciales, contacta con el autor.
 
 Incorporan componentes MIT de terceros (ODrive, TinyUSB) cuyos avisos de
 copyright se conservan en el fichero de licencia.
+
+## 📫 Contacto
+
+<div align="center">
+  <a href="mailto:avillenaherreros1373@gmail.com">
+    <img src="https://img.shields.io/badge/Correo-avillenaherreros1373%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Correo">
+  </a>
+  <a href="https://www.linkedin.com/in/alejandro-villena-herreros-aaa901388/">
+    <img src="https://img.shields.io/badge/LinkedIn-Alejandro_Villena-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  <a href="https://github.com/AlexxCFH">
+    <img src="https://img.shields.io/badge/GitHub-AlexxCFH-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+</div>
 
 ---
 <div align="center">Copyright © 2026 VH SimGrid</div>
