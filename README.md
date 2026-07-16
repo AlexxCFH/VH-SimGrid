@@ -1,5 +1,5 @@
 
-## VH SimGrid
+<h1 align="center">VH SimGrid</h1>
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/AlexxCFH/VH-SimGrid?style=for-the-badge&label=Versi%C3%B3n&color=FF073A" alt="Última versión">
@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/App-VH_Configurador-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="Configurador">
 </div>
 
-## 📋 Descripción
+## Descripción
 
 Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware real:
 
@@ -28,13 +28,13 @@ Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware rea
 Este repositorio contiene **las descargas oficiales** (instalador y firmwares).
 Es el único canal de distribución.
 
-## 📥 Descargas
+## Descargas
 
 En [Releases](../../releases) encontrarás, para cada versión:
 
 | Fichero | Qué es |
 |---|---|
-| `VH-SimGrid-Setup-vX.Y.Z.exe` | 🟢 **Instalador de Windows (recomendado)**: la app + los firmwares. Sin permisos de administrador. |
+| `VH-SimGrid-Setup-vX.Y.Z.exe` | **Instalador de Windows (recomendado)**: la app + los firmwares. Sin permisos de administrador. |
 | `VH-GridDD15-firmware-vX.Y.Z.hex` | Firmware del volante, solo para flasheo manual con STM32CubeProgrammer. |
 | `VH-Axis-pedalera-vX.Y.Z.hex` | Firmware de la pedalera, solo para flasheo manual con arduino-cli/avrdude. |
 
@@ -49,43 +49,43 @@ En [Releases](../../releases) encontrarás, para cada versión:
 > ponla en DFU con el jumper BOOT0 y flashea el `.hex` con STM32CubeProgrammer.
 > Al actualizar, el instalador conserva perfiles y calibración.
 
-## ✨ Qué incluye
+## Qué incluye
 
-### 🎮 Volante (VH Grid DD15)
+### Volante (VH Grid DD15)
 
-🧲 **FFB nativo de DirectInput** — constant force, spring, damper, friction e
+**FFB nativo de DirectInput** — constant force, spring, damper, friction e
 inertia con ganancias independientes; rango de giro de 90° a 1440°.
 
-🎛️ **Ecualizador de efectos por bandas** — 6 bandas de frecuencia (0–200%) para
+**Ecualizador de efectos por bandas** — 6 bandas de frecuencia (0–200%) para
 matizar qué se siente: peso de la dirección, pianos, ABS, grava...
 
-🧈 **Anti-cogging** — calibración automática que elimina el rizado magnético del
+**Anti-cogging** — calibración automática que elimina el rizado magnético del
 motor; se guarda en flash.
 
-🛡️ **Seguridad probada en choques reales** — guardia de sobrevelocidad,
+**Seguridad probada en choques reales** — guardia de sobrevelocidad,
 protección térmica, tope de giro progresivo, limitador de regeneración y
 detector de oscilaciones.
 
-### 🦶 Pedalera (VH Axis)
+### Pedalera (VH Axis)
 
 - Curva de respuesta arrastrable **por pedal**, con preajustes, zona muerta e
   inversión del sentido
 - **Freno por kg objetivo** gracias a la célula de carga
 - Calibración guiada desde la app y **guardado automático** en la EEPROM
 
-### 🖥️ VH Configurador
+### VH Configurador
 
 📊 Estado en vivo, ajustes en tiempo real y **perfiles por tipo de coche**
 (Formula, GT3, GT2, Hypercar, Rally...).
 
-🚦 **Luces de RPM en el aro**: la app lee la telemetría del juego (Assetto
+**Luces de RPM en el aro**: la app lee la telemetría del juego (Assetto
 Corsa / ACC, más juegos en camino) y las alimenta sola en segundo plano.
 
-🎨 Modo oscuro y claro · 🌍 5 idiomas (español, inglés, catalán, gallego y
-euskera) · 🔌 conexión y reconexión automáticas · 🪟 ventana sin marco con
+Modo oscuro y claro · 5 idiomas (español, inglés, catalán, gallego y
+euskera) · conexión y reconexión automáticas · ventana sin marco con
 estética propia.
 
-## 🔧 Hardware
+## Hardware
 
 | Pieza | Base |
 |---|---|
@@ -93,12 +93,12 @@ estética propia.
 | Pedalera | Arduino Micro + sensores Hall + célula de carga con INA333 |
 | Aro (provisional) | Arduino Leonardo + LEDs WS2812 (luces de RPM) |
 
-## 🆘 Soporte
+## Soporte
 
 Si algo no funciona, abre una [incidencia](../../issues) indicando la versión
 instalada y qué periférico falla.
 
-## 📜 Licencia
+## Licencia
 
 Los binarios son **gratuitos para uso personal y no comercial**. No está
 permitido lucrarse con ellos (venderlos, cobrar por instalarlos, usarlos en
@@ -109,7 +109,7 @@ libre; para usos comerciales, contacta con el autor.
 Incorporan componentes MIT de terceros (ODrive, TinyUSB) cuyos avisos de
 copyright se conservan en el fichero de licencia.
 
-## 📫 Contacto
+## Contacto
 
 <div align="center">
   <a href="mailto:avillenaherreros1373@gmail.com">
