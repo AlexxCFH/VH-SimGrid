@@ -1,4 +1,3 @@
-
 <h1 align="center">VH SimGrid</h1>
 
 <div align="center">
@@ -11,6 +10,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Volante-Direct_Drive_FFB-orange?style=for-the-badge&logo=usb&logoColor=white" alt="FFB">
   <img src="https://img.shields.io/badge/Pedalera-3_pedales_(c%C3%A9lula_de_carga)-00979D?style=for-the-badge&logo=arduino&logoColor=white" alt="Pedalera">
+  <img src="https://img.shields.io/badge/Aro-Luces_RPM_%2B_botones-FF073A?style=for-the-badge&logo=arduino&logoColor=white" alt="Aro">
   <img src="https://img.shields.io/badge/App-VH_Configurador-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="Configurador">
 </div>
 
@@ -22,6 +22,8 @@ Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware rea
   como un volante FFB nativo (USB HID PID): sin drivers ni software residente
 - **VH Axis** — pedalera de 3 pedales: acelerador y embrague con sensores Hall,
   y freno con célula de carga (mide fuerza real, no recorrido)
+- **VH Formula Apex** — aro/volante con tira de LEDs de RPM por eventos y matriz
+  de botones, configurable al detalle desde la app
 - **VH Configurador** — la aplicación de escritorio que lo configura todo en
   vivo, sin reflashear
 
@@ -37,13 +39,16 @@ En [Releases](../../releases) encontrarás, para cada versión:
 | `VH-SimGrid-Setup-vX.Y.Z.exe` | **Instalador de Windows (recomendado)**: la app + los firmwares. Sin permisos de administrador. |
 | `VH-GridDD15-firmware-vX.Y.Z.hex` | Firmware del volante, solo para flasheo manual con STM32CubeProgrammer. |
 | `VH-Axis-pedalera-vX.Y.Z.hex` | Firmware de la pedalera, solo para flasheo manual con arduino-cli/avrdude. |
+| `VH-FormulaApex-aro-vX.Y.Z.hex` | Firmware del aro, solo para flasheo manual con arduino-cli/avrdude. |
 
 ## Instalación
 
 1. Descarga y ejecuta el instalador de la última release.
 2. Abre **VH Configurador**: los periféricos se detectan y conectan solos.
 3. Las actualizaciones de firmware se hacen **desde la propia app**, sin
-   herramientas externas (el volante ni siquiera necesita el jumper BOOT0).
+   herramientas externas: al conectar un periférico, si hay firmware nuevo la
+   app te ofrece grabarlo con un clic (el volante ni siquiera necesita el jumper
+   BOOT0; el aro y la pedalera se graban sin instalar nada).
 
 > El único flasheo manual es el primero del volante (placa nueva, sin firmware):
 > ponla en DFU con el jumper BOOT0 y flashea el `.hex` con STM32CubeProgrammer.
@@ -73,13 +78,26 @@ detector de oscilaciones.
 - **Freno por kg objetivo** gracias a la célula de carga
 - Calibración guiada desde la app y **guardado automático** en la EEPROM
 
+### Aro (VH Formula Apex)
+
+- **Luces de RPM por LED**: tablero configurable con umbrales, colores en
+  degradado, destello al corte y ajuste automático al régimen real de cada coche
+- **Luces por eventos**: banderas (AC y ACC), TC/ABS/DRS/ERS, limitador y pit
+  lane, spotter de proximidad, barras de freno/acelerador/combustible... con
+  estilos (fijo, parpadeo, respiración, desplazamiento) y perfiles por juego
+- **Matriz de botones** integrada, y brillo que se recuerda aunque arranque sin PC
+
 ### VH Configurador
 
 Estado en vivo, ajustes en tiempo real y **perfiles por tipo de coche**
-(Formula, GT3, GT2, Hypercar, Rally...).
+(Formula, GT3, GT2, Hypercar, Rally...), con opción de que se apliquen solos
+al detectar el juego.
 
-**Luces de RPM en el aro**: la app lee la telemetría del juego (Assetto
-Corsa / ACC, más juegos en camino) y las alimenta sola en segundo plano.
+**Telemetría de los juegos**: la app lee Assetto Corsa, ACC y Automobilista 2 y
+alimenta sola las luces del aro en segundo plano (más juegos en camino).
+
+**Copia de seguridad completa**: exporta e importa todos los ajustes y perfiles
+en un solo fichero.
 
 Modo oscuro y claro · 5 idiomas (español, inglés, catalán, gallego y
 euskera) · conexión y reconexión automáticas · ventana sin marco con
@@ -91,7 +109,7 @@ estética propia.
 |---|---|
 | Volante | MKS ODrive Mini (STM32F405) + motor de hoverboard |
 | Pedalera | Arduino Micro + sensores Hall + célula de carga con INA333 |
-| Aro (provisional) | Arduino Leonardo + LEDs WS2812 (luces de RPM) |
+| Aro | Arduino Leonardo + LEDs WS2812 (luces de RPM) + matriz de botones |
 
 ## Soporte
 
