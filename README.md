@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Volante-Direct_Drive_FFB-orange?style=for-the-badge&logo=usb&logoColor=white" alt="FFB">
   <img src="https://img.shields.io/badge/Pedalera-3_pedales_(c%C3%A9lula_de_carga)-00979D?style=for-the-badge&logo=arduino&logoColor=white" alt="Pedalera">
   <img src="https://img.shields.io/badge/Aro-Luces_RPM_%2B_botones-FF073A?style=for-the-badge&logo=arduino&logoColor=white" alt="Aro">
-  <img src="https://img.shields.io/badge/App-VH_Configurador-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="Configurador">
+  <img src="https://img.shields.io/badge/App-VH_SimGrid-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="VH SimGrid">
 </div>
 
 ## Descripción
@@ -22,10 +22,11 @@ Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware rea
   como un volante FFB nativo (USB HID PID): sin drivers ni software residente
 - **VH Axis** — pedalera de 3 pedales: acelerador y embrague con sensores Hall,
   y freno con célula de carga (mide fuerza real, no recorrido)
-- **VH Formula Apex** — aro/volante con tira de LEDs de RPM por eventos y matriz
-  de botones, configurable al detalle desde la app
-- **VH Configurador** — la aplicación de escritorio que lo configura todo en
-  vivo, sin reflashear
+- **VH Formula Apex** — aro con tira de LEDs de RPM y eventos, matriz de
+  botones y encoders, configurable al detalle desde la app
+- **VH SimGrid** — la aplicación de escritorio que configura los tres
+  periféricos en vivo, sin reflashear, y además trae **dash**, **ingeniero de
+  pista por voz** y **análisis de telemetría**
 
 Este repositorio contiene **las descargas oficiales** (instalador y firmwares).
 Es el único canal de distribución.
@@ -44,7 +45,9 @@ En [Releases](../../releases) encontrarás, para cada versión:
 ## Instalación
 
 1. Descarga y ejecuta el instalador de la última release.
-2. Abre **VH Configurador**: los periféricos se detectan y conectan solos.
+2. Abre **VH SimGrid**: los periféricos se detectan y conectan solos. La
+   primera vez, un asistente te guía por el volante, los pedales, el aro y la
+   telemetría de tus juegos.
 3. Las actualizaciones de firmware se hacen **desde la propia app**, sin
    herramientas externas: al conectar un periférico, si hay firmware nuevo la
    app te ofrece grabarlo con un clic (el volante ni siquiera necesita el jumper
@@ -52,7 +55,7 @@ En [Releases](../../releases) encontrarás, para cada versión:
 
 > El único flasheo manual es el primero del volante (placa nueva, sin firmware):
 > ponla en DFU con el jumper BOOT0 y flashea el `.hex` con STM32CubeProgrammer.
-> Al actualizar, el instalador conserva perfiles y calibración.
+> Al actualizar, el instalador conserva perfiles, dashes y calibración.
 
 ## Qué incluye
 
@@ -63,6 +66,9 @@ inertia con ganancias independientes; rango de giro de 90° a 1440°.
 
 **Ecualizador de efectos por bandas** — 6 bandas de frecuencia (0–200%) para
 matizar qué se siente: peso de la dirección, pianos, ABS, grava...
+
+**Registro en vivo** del giro y de la fuerza de los últimos segundos, con la
+línea de clipping marcada.
 
 **Anti-cogging** — calibración automática que elimina el rizado magnético del
 motor; se guarda en flash.
@@ -82,26 +88,47 @@ detector de oscilaciones.
 
 - **Luces de RPM por LED**: tablero configurable con umbrales, colores en
   degradado, destello al corte y ajuste automático al régimen real de cada coche
-- **Luces por eventos**: banderas (AC y ACC), TC/ABS/DRS/ERS, limitador y pit
-  lane, spotter de proximidad, barras de freno/acelerador/combustible... con
-  estilos (fijo, parpadeo, respiración, desplazamiento) y perfiles por juego
-- **Matriz de botones** integrada, y brillo que se recuerda aunque arranque sin PC
+- **Luces por eventos**: banderas, TC/ABS/DRS/ERS, limitador y pit lane,
+  spotter de proximidad, barras de freno/acelerador/combustible... con estilos
+  (fijo, parpadeo, respiración, desplazamiento) y perfiles por juego y por coche
+- **Matriz de botones y encoders** integrados, y brillo que se recuerda aunque
+  arranque sin PC
 
-### VH Configurador
+### Dash
 
-Estado en vivo, ajustes en tiempo real y **perfiles por tipo de coche**
-(Formula, GT3, GT2, Hypercar, Rally...), con opción de que se apliquen solos
-al detectar el juego.
+Tableros en el monitor que elijas, con **galería y editor integrado**: textos,
+agujas, barras, gauges e imágenes, con deshacer y vista previa en vivo. Trae
+**una veintena de dashes listos** (GT3, F1, Formula Alpha 2026...) y se pueden
+exportar e importar en un `.zip`.
 
-**Telemetría de los juegos**: la app lee Assetto Corsa, ACC y Automobilista 2 y
-alimenta sola las luces del aro en segundo plano (más juegos en camino).
+### Ingeniero de pista
+
+**Te habla mientras conduces**: combustible, gomas, presiones, daños,
+estrategia, rivales, ritmo, spotter y, al cruzar la meta, tu resultado y qué
+mejorar. Elige cuándo hablar para no hacerlo en plena frenada, y **se le
+pregunta por voz** con un botón del aro. Voces en **español e inglés**, todo
+procesado en tu equipo.
+
+### Análisis
+
+Tus sesiones grabadas, canal a canal, al estilo de **MoTeC i2**: vueltas,
+sectores y curvas, comparación contra una vuelta de referencia y zoom común a
+todas las gráficas.
+
+### La aplicación
+
+**Telemetría de 18 juegos**: Assetto Corsa, ACC, AC EVO, AC Rally, Le Mans
+Ultimate, iRacing, RaceRoom, Automobilista 1 y 2, rFactor 2, F1, DiRT Rally,
+EA WRC, BeamNG y los simuladores de camiones, entre otros.
+
+**Perfiles por tipo de coche** (Formula, GT3, GT2, Hypercar, Rally...), con
+opción de que se apliquen solos al detectar el juego.
 
 **Copia de seguridad completa**: exporta e importa todos los ajustes y perfiles
 en un solo fichero.
 
-Modo oscuro y claro · 5 idiomas (español, inglés, catalán, gallego y
-euskera) · conexión y reconexión automáticas · ventana sin marco con
-estética propia.
+Modo oscuro y claro · español e inglés · conexión y reconexión automáticas ·
+ventana sin marco con estética propia.
 
 ## Hardware
 
@@ -109,12 +136,18 @@ estética propia.
 |---|---|
 | Volante | MKS ODrive Mini (STM32F405) + motor de hoverboard |
 | Pedalera | Arduino Micro + sensores Hall + célula de carga con INA333 |
-| Aro | Arduino Leonardo + LEDs WS2812 (luces de RPM) + matriz de botones |
+| Aro | ATmega32U4 + LEDs WS2812 + matriz de botones + encoders (MCP23017) |
+
+## Privacidad
+
+Nada sale de tu equipo: la voz del ingeniero y el reconocimiento de lo que
+dices funcionan en local, y tus grabaciones de telemetría se quedan en tu disco.
 
 ## Soporte
 
 Si algo no funciona, abre una [incidencia](../../issues) indicando la versión
-instalada y qué periférico falla.
+instalada y qué periférico falla. Desde la app, **Guardar diagnóstico** genera
+un fichero con lo necesario para adjuntarlo.
 
 ## Licencia
 
@@ -125,7 +158,23 @@ repositorio (ver [LICENSE](LICENSE)). Compartir el enlace a este repositorio es
 libre; para usos comerciales, contacta con el autor.
 
 Incorporan componentes MIT de terceros (ODrive, TinyUSB) cuyos avisos de
-copyright se conservan en el fichero de licencia.
+copyright se conservan en el fichero de licencia. La voz y el reconocimiento
+usan [Piper](https://github.com/rhasspy/piper) (MIT) y
+[Vosk](https://alphacephei.com/vosk/) (Apache 2.0).
+
+### Créditos de las voces
+
+Cada voz del ingeniero viene de un dataset con su propia licencia:
+
+| Voz | Origen | Licencia |
+|---|---|---|
+| *Lucía* (es_ES-sharvard) | [Sharvard Corpus](https://datashare.ed.ac.uk/handle/10283/574), V. Aubanel, M. L. García Lecumberri y M. Cooke, The University of Edinburgh | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| *Emily* (en_US-libritts_r) | [LibriTTS-R](https://www.openslr.org/141/) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| *Harry* (en_GB-northern_english_male) | [openslr.org/83](https://www.openslr.org/83/) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| *Sergio* (es_ES-davefx) | — | CC0 (dominio público) |
+
+Las voces se distribuyen sin modificar, cada una con su ficha (`MODEL_CARD`)
+junto al modelo.
 
 ## Contacto
 
