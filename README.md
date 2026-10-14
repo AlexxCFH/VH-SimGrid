@@ -14,10 +14,6 @@
   <img src="https://img.shields.io/badge/App-VH_SimGrid-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="VH SimGrid">
 </div>
 
-<p align="center">
-  <img src="screenshots/strategy.png" alt="VH SimGrid: pestaña de estrategia del ingeniero de pista" width="900">
-</p>
-
 ## Descripción
 
 Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware real:
@@ -30,37 +26,10 @@ Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware rea
   botones y encoders, configurable al detalle desde la app
 - **VH SimGrid**: la aplicación de escritorio que configura los tres
   periféricos en vivo, sin reflashear. Además trae **dash**, **ingeniero de
-  pista por voz** con **estrategia de carrera**, y **análisis de telemetría**
+  pista por voz** y **análisis de telemetría**
 
 Este repositorio contiene **las descargas oficiales** (instalador y firmwares).
 Es el único canal de distribución.
-
-## Capturas
-
-<table>
-  <tr>
-    <td width="50%"><img src="screenshots/home.png" alt="Inicio: lanzador de juegos y estado de los periféricos"></td>
-    <td width="50%"><img src="screenshots/dash-gallery.png" alt="Galería de dashes"></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Inicio</b>: tus juegos y tus periféricos de un vistazo</td>
-    <td align="center"><b>Dash</b>: una galería de tableros listos y un editor propio</td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="screenshots/strategy.png" alt="Estrategia de carrera"></td>
-    <td width="50%"><img src="screenshots/engineer-alerts.png" alt="Avisos del ingeniero por familias"></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Estrategia</b>: calculadora, tandas arrastrables y gasolina vuelta a vuelta</td>
-    <td align="center"><b>Ingeniero</b>: qué te dice por radio, familia a familia</td>
-  </tr>
-  <tr>
-    <td colspan="2"><img src="screenshots/analysis.png" alt="Análisis de una vuelta canal a canal"></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><b>Análisis</b>: cada vuelta canal a canal, con sectores y curvas</td>
-  </tr>
-</table>
 
 ## Descargas
 
@@ -102,20 +71,18 @@ matizar qué se siente: peso de la dirección, pianos, ABS, grava...
 línea de clipping marcada.
 
 **Anti-cogging**: calibración automática que elimina el rizado magnético del
-motor. Se guarda en flash y se conserva al actualizar el firmware.
+motor; se guarda en flash.
 
 **Seguridad probada en choques reales**: guardia de sobrevelocidad,
 protección térmica, tope de giro progresivo, limitador de regeneración y
-detector de oscilaciones. La amortiguación sigue estable aunque subas mucho
-la fuerza.
+detector de oscilaciones.
 
 ### Pedalera (VH Axis)
 
 - Curva de respuesta arrastrable **por pedal**, con preajustes, zona muerta e
   inversión del sentido
 - **Freno por kg objetivo** gracias a la célula de carga
-- **Lectura a ~1000 Hz con filtro de picos**: el pedal suelto marca 0, sin
-  ejes fantasma
+- **Lectura a ~1000 Hz** con filtrado del ruido del sensor
 - Calibración guiada desde la app y **guardado automático** en la EEPROM
 
 ### Aro (VH Formula Apex)
@@ -133,32 +100,29 @@ la fuerza.
 Tableros en el monitor que elijas, con **galería y editor integrado**: textos,
 agujas, barras, gauges e imágenes, con deshacer y vista previa en vivo. Trae
 **20 dashes listos** (GT3, F1, Formula Alpha 2026...) y se pueden exportar e
-importar en un `.zip`. El dash reconoce su pantalla por el propio monitor, así
-que no salta a otra aunque Windows la renombre.
+importar en un `.zip`.
+
+<p align="center"><img src="screenshots/dash-gallery.png" alt="Galería de dashes" width="800"></p>
 
 ### Ingeniero de pista
 
 **Te habla mientras conduces**: combustible, gomas, presiones, daños,
 sanciones, rivales, ritmo, spotter y, al cruzar la meta, tu resultado y qué
-mejorar. Elige cuándo hablar para no hacerlo en plena frenada, los avisos no
-se pisan entre sí, y **se le pregunta por voz** con un botón del aro. Voces en
-**español e inglés**, todo procesado en tu equipo.
+mejorar. Elige cuándo hablar para no hacerlo en plena frenada y **se le
+pregunta por voz** con un botón del aro. Qué familias de avisos dice, y cuánto
+habla, se ajusta por separado. Voces en **español e inglés**, todo procesado en
+tu equipo.
 
-### Estrategia
+<p align="center"><img src="screenshots/engineer-alerts.png" alt="Avisos del ingeniero por familias" width="800"></p>
 
-Una **calculadora de estrategia** con biblioteca de estrategias por coche y
-circuito:
+Incluye una **calculadora de estrategia** con estrategias guardadas por coche y
+circuito: compara opciones de paradas según el reglamento de la carrera
+(paradas obligatorias con ventana, juegos de gomas, repostaje, varios
+pilotos), permite mover las paradas a mano y muestra la gasolina y el ritmo
+vuelta a vuelta. La estrategia elegida es la que el ingeniero sigue en
+carrera, llamándote a boxes en la vuelta que toca.
 
-- **Opciones de paradas** comparadas, con el reglamento de tu carrera:
-  paradas obligatorias con ventana, juegos de gomas, repostaje, varios pilotos
-  y su stint máximo
-- **Tandas arrastrables** y gráficas de gasolina y ritmo vuelta a vuelta
-- **Se pacta y el ingeniero la sigue en carrera**: te llama a boxes («box,
-  box, box» en la última curva), te dice cuánto echar y, si llueve, rehace el
-  plan
-- **Medir en pista**: en unos libres, el ingeniero te pide por radio lo que
-  hay que rodar y rellena la estrategia con tus números
-- **Clasificación**: cuánta gasolina echar, la justa
+<p align="center"><img src="screenshots/strategy.png" alt="Estrategia de carrera" width="800"></p>
 
 ### Análisis
 
@@ -166,7 +130,11 @@ Tus sesiones grabadas, canal a canal, al estilo de **MoTeC i2**: vueltas,
 sectores y curvas, comparación contra una vuelta de referencia y zoom común a
 todas las gráficas.
 
+<p align="center"><img src="screenshots/analysis.png" alt="Análisis de una vuelta canal a canal" width="800"></p>
+
 ### La aplicación
+
+<p align="center"><img src="screenshots/home.png" alt="Inicio: lanzador de juegos y estado de los periféricos" width="800"></p>
 
 **Telemetría de 18 juegos**: Assetto Corsa, ACC, AC EVO, AC Rally, Le Mans
 Ultimate, iRacing, RaceRoom, Automobilista 1 y 2, rFactor 2, F1 (2023 a 2025),
