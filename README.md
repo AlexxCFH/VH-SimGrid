@@ -14,22 +14,53 @@
   <img src="https://img.shields.io/badge/App-VH_SimGrid-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="VH SimGrid">
 </div>
 
+<p align="center">
+  <img src="screenshots/strategy.png" alt="VH SimGrid: pestaña de estrategia del ingeniero de pista" width="900">
+</p>
+
 ## Descripción
 
 Ecosistema **simracing DIY completo**, desarrollado y probado sobre hardware real:
 
-- **VH Grid DD15** — volante direct drive de force feedback. Windows lo detecta
-  como un volante FFB nativo (USB HID PID): sin drivers ni software residente
-- **VH Axis** — pedalera de 3 pedales: acelerador y embrague con sensores Hall,
+- **VH Grid DD15**: volante direct drive de force feedback. Windows lo detecta
+  como un volante FFB nativo (USB HID PID), sin drivers ni software residente
+- **VH Axis**: pedalera de 3 pedales. Acelerador y embrague con sensores Hall,
   y freno con célula de carga (mide fuerza real, no recorrido)
-- **VH Formula Apex** — aro con tira de LEDs de RPM y eventos, matriz de
+- **VH Formula Apex**: aro con tira de LEDs de RPM y eventos, matriz de
   botones y encoders, configurable al detalle desde la app
-- **VH SimGrid** — la aplicación de escritorio que configura los tres
-  periféricos en vivo, sin reflashear, y además trae **dash**, **ingeniero de
-  pista por voz** y **análisis de telemetría**
+- **VH SimGrid**: la aplicación de escritorio que configura los tres
+  periféricos en vivo, sin reflashear. Además trae **dash**, **ingeniero de
+  pista por voz** con **estrategia de carrera**, y **análisis de telemetría**
 
 Este repositorio contiene **las descargas oficiales** (instalador y firmwares).
 Es el único canal de distribución.
+
+## Capturas
+
+<table>
+  <tr>
+    <td width="50%"><img src="screenshots/home.png" alt="Inicio: lanzador de juegos y estado de los periféricos"></td>
+    <td width="50%"><img src="screenshots/dash-gallery.png" alt="Galería de dashes"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Inicio</b>: tus juegos y tus periféricos de un vistazo</td>
+    <td align="center"><b>Dash</b>: una galería de tableros listos y un editor propio</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="screenshots/strategy.png" alt="Estrategia de carrera"></td>
+    <td width="50%"><img src="screenshots/engineer-alerts.png" alt="Avisos del ingeniero por familias"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Estrategia</b>: calculadora, tandas arrastrables y gasolina vuelta a vuelta</td>
+    <td align="center"><b>Ingeniero</b>: qué te dice por radio, familia a familia</td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="screenshots/analysis.png" alt="Análisis de una vuelta canal a canal"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><b>Análisis</b>: cada vuelta canal a canal, con sectores y curvas</td>
+  </tr>
+</table>
 
 ## Descargas
 
@@ -37,7 +68,7 @@ En [Releases](../../releases) encontrarás, para cada versión:
 
 | Fichero | Qué es |
 |---|---|
-| `VH-SimGrid-Setup-vX.Y.Z.exe` | **Instalador de Windows (recomendado)**: la app + los firmwares. Sin permisos de administrador. |
+| `VH-SimGrid-Setup-vX.Y.Z.exe` | **Instalador de Windows (recomendado)**: la app y los firmwares. No pide permisos de administrador. |
 | `VH-GridDD15-firmware-vX.Y.Z.hex` | Firmware del volante, solo para flasheo manual con STM32CubeProgrammer. |
 | `VH-Axis-pedalera-vX.Y.Z.hex` | Firmware de la pedalera, solo para flasheo manual con arduino-cli/avrdude. |
 | `VH-FormulaApex-aro-vX.Y.Z.hex` | Firmware del aro, solo para flasheo manual con arduino-cli/avrdude. |
@@ -50,8 +81,8 @@ En [Releases](../../releases) encontrarás, para cada versión:
    telemetría de tus juegos.
 3. Las actualizaciones de firmware se hacen **desde la propia app**, sin
    herramientas externas: al conectar un periférico, si hay firmware nuevo la
-   app te ofrece grabarlo con un clic (el volante ni siquiera necesita el jumper
-   BOOT0; el aro y la pedalera se graban sin instalar nada).
+   app te ofrece grabarlo con un clic. El volante ni siquiera necesita el
+   jumper BOOT0, y el aro y la pedalera se graban sin instalar nada.
 
 > El único flasheo manual es el primero del volante (placa nueva, sin firmware):
 > ponla en DFU con el jumper BOOT0 y flashea el `.hex` con STM32CubeProgrammer.
@@ -61,27 +92,30 @@ En [Releases](../../releases) encontrarás, para cada versión:
 
 ### Volante (VH Grid DD15)
 
-**FFB nativo de DirectInput** — constant force, spring, damper, friction e
-inertia con ganancias independientes; rango de giro de 90° a 1440°.
+**FFB nativo de DirectInput**: constant force, spring, damper, friction e
+inertia con ganancias independientes, y rango de giro de 90° a 1440°.
 
-**Ecualizador de efectos por bandas** — 6 bandas de frecuencia (0–200%) para
+**Ecualizador de efectos por bandas**: 6 bandas de frecuencia (0–500 %) para
 matizar qué se siente: peso de la dirección, pianos, ABS, grava...
 
 **Registro en vivo** del giro y de la fuerza de los últimos segundos, con la
 línea de clipping marcada.
 
-**Anti-cogging** — calibración automática que elimina el rizado magnético del
-motor; se guarda en flash.
+**Anti-cogging**: calibración automática que elimina el rizado magnético del
+motor. Se guarda en flash y se conserva al actualizar el firmware.
 
-**Seguridad probada en choques reales** — guardia de sobrevelocidad,
+**Seguridad probada en choques reales**: guardia de sobrevelocidad,
 protección térmica, tope de giro progresivo, limitador de regeneración y
-detector de oscilaciones.
+detector de oscilaciones. La amortiguación sigue estable aunque subas mucho
+la fuerza.
 
 ### Pedalera (VH Axis)
 
 - Curva de respuesta arrastrable **por pedal**, con preajustes, zona muerta e
   inversión del sentido
 - **Freno por kg objetivo** gracias a la célula de carga
+- **Lectura a ~1000 Hz con filtro de picos**: el pedal suelto marca 0, sin
+  ejes fantasma
 - Calibración guiada desde la app y **guardado automático** en la EEPROM
 
 ### Aro (VH Formula Apex)
@@ -98,16 +132,33 @@ detector de oscilaciones.
 
 Tableros en el monitor que elijas, con **galería y editor integrado**: textos,
 agujas, barras, gauges e imágenes, con deshacer y vista previa en vivo. Trae
-**una veintena de dashes listos** (GT3, F1, Formula Alpha 2026...) y se pueden
-exportar e importar en un `.zip`.
+**20 dashes listos** (GT3, F1, Formula Alpha 2026...) y se pueden exportar e
+importar en un `.zip`. El dash reconoce su pantalla por el propio monitor, así
+que no salta a otra aunque Windows la renombre.
 
 ### Ingeniero de pista
 
 **Te habla mientras conduces**: combustible, gomas, presiones, daños,
-estrategia, rivales, ritmo, spotter y, al cruzar la meta, tu resultado y qué
-mejorar. Elige cuándo hablar para no hacerlo en plena frenada, y **se le
-pregunta por voz** con un botón del aro. Voces en **español e inglés**, todo
-procesado en tu equipo.
+sanciones, rivales, ritmo, spotter y, al cruzar la meta, tu resultado y qué
+mejorar. Elige cuándo hablar para no hacerlo en plena frenada, los avisos no
+se pisan entre sí, y **se le pregunta por voz** con un botón del aro. Voces en
+**español e inglés**, todo procesado en tu equipo.
+
+### Estrategia
+
+Una **calculadora de estrategia** con biblioteca de estrategias por coche y
+circuito:
+
+- **Opciones de paradas** comparadas, con el reglamento de tu carrera:
+  paradas obligatorias con ventana, juegos de gomas, repostaje, varios pilotos
+  y su stint máximo
+- **Tandas arrastrables** y gráficas de gasolina y ritmo vuelta a vuelta
+- **Se pacta y el ingeniero la sigue en carrera**: te llama a boxes («box,
+  box, box» en la última curva), te dice cuánto echar y, si llueve, rehace el
+  plan
+- **Medir en pista**: en unos libres, el ingeniero te pide por radio lo que
+  hay que rodar y rellena la estrategia con tus números
+- **Clasificación**: cuánta gasolina echar, la justa
 
 ### Análisis
 
@@ -118,8 +169,8 @@ todas las gráficas.
 ### La aplicación
 
 **Telemetría de 18 juegos**: Assetto Corsa, ACC, AC EVO, AC Rally, Le Mans
-Ultimate, iRacing, RaceRoom, Automobilista 1 y 2, rFactor 2, F1, DiRT Rally,
-EA WRC, BeamNG y los simuladores de camiones, entre otros.
+Ultimate, iRacing, RaceRoom, Automobilista 1 y 2, rFactor 2, F1 (2023 a 2025),
+DiRT Rally 2.0, EA WRC, BeamNG y los simuladores de camiones.
 
 **Perfiles por tipo de coche** (Formula, GT3, GT2, Hypercar, Rally...), con
 opción de que se apliquen solos al detectar el juego.
