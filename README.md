@@ -57,97 +57,181 @@ En [Releases](../../releases) encontrarás, para cada versión:
 > ponla en DFU con el jumper BOOT0 y flashea el `.hex` con STM32CubeProgrammer.
 > Al actualizar, el instalador conserva perfiles, dashes y calibración.
 
-## Qué incluye
+## La aplicación, página a página
+
+La barra de la izquierda lleva a cada parte. Todo se aplica en vivo: los
+periféricos no se reflashean para cambiar un ajuste.
+
+### Inicio
+
+<p align="center"><img src="screenshots/home.png" alt="Inicio: lanzador de juegos y estado de los periféricos" width="800"></p>
+
+- **Lanzador de juegos**: los simuladores que tienes instalados, con su
+  carátula. Indica cuáles tienen ya la telemetría configurada y los abre con
+  un clic
+- **Tus dispositivos**: una tarjeta por periférico con su estado (conectado o
+  no) y lo que se toca a diario: el giro y la fuerza máxima del volante, y el
+  recorrido en vivo de cada pedal
 
 ### Volante (VH Grid DD15)
 
-**FFB nativo de DirectInput**: constant force, spring, damper, friction e
-inertia con ganancias independientes, y rango de giro de 90° a 1440°.
+El volante es un FFB nativo de DirectInput: constant force, spring, damper,
+friction e inertia, cada uno con su ganancia. Arriba se elige el **perfil**
+(GT3, Formula, Rally...), que se puede aplicar solo al detectar el juego.
 
-**Ecualizador de efectos por bandas**: 6 bandas de frecuencia (0–500 %) para
-matizar qué se siente: peso de la dirección, pianos, ABS, grava...
+<p align="center"><img src="screenshots/wheel-settings.png" alt="Volante: pestaña Configuración" width="800"></p>
 
-**Registro en vivo** del giro y de la fuerza de los últimos segundos, con la
-línea de clipping marcada.
+- **Configuración**: rango de giro (de 90° a 1440°) y centrado, la sensación
+  general (fuerza máxima, suavizado de la señal, refuerzo de las fuerzas
+  pequeñas, dureza del tope de giro) y los efectos base del volante
+  (amortiguación, fricción, inercia). Aquí están también el reinicio de la
+  base y la calibración **anti-cogging**, que elimina el rizado magnético del
+  motor y se guarda en flash
+- **Ecualizador FFB**: 6 bandas de 5 a 60 Hz, cada una del 0 al 500 %, para
+  decidir qué se nota más: el peso de la dirección, los golpes, los pianos, el
+  ABS, la hierba y la grava, o la textura fina del asfalto
 
-**Anti-cogging**: calibración automática que elimina el rizado magnético del
-motor; se guarda en flash.
+<p align="center"><img src="screenshots/wheel-equalizer.png" alt="Volante: ecualizador FFB por bandas" width="800"></p>
 
-**Seguridad probada en choques reales**: guardia de sobrevelocidad,
-protección térmica, tope de giro progresivo, limitador de regeneración y
-detector de oscilaciones.
+- **Curva FFB base**: la curva de 9 puntos que traduce la fuerza que pide el
+  juego en la fuerza que da el motor, con preajustes
+- **Varios**: el estado del motor en vivo, un registro de los últimos
+  segundos del giro y de la fuerza con la línea de clipping marcada, y las
+  opciones y el mantenimiento de la base
 
-### Pedalera (VH Axis)
-
-- Curva de respuesta arrastrable **por pedal**, con preajustes, zona muerta e
-  inversión del sentido
-- **Freno por kg objetivo** gracias a la célula de carga
-- **Lectura a ~1000 Hz** con filtrado del ruido del sensor
-- Calibración guiada desde la app y **guardado automático** en la EEPROM
+La base lleva guardia de sobrevelocidad, protección térmica, tope de giro
+progresivo, limitador de regeneración y detector de oscilaciones, probados en
+choques reales.
 
 ### Aro (VH Formula Apex)
 
-- **Luces de RPM por LED**: tablero configurable con umbrales, colores en
-  degradado, destello al corte y ajuste automático al régimen real de cada coche
-- **Luces por eventos**: banderas, TC/ABS/DRS/ERS, limitador y pit lane,
-  spotter de proximidad, barras de freno/acelerador/combustible... con estilos
-  (fijo, parpadeo, respiración, desplazamiento) y perfiles por juego y por coche
-- **Matriz de botones y encoders** integrados, y brillo que se recuerda aunque
-  arranque sin PC
+- **Configuraciones generales**: vista previa de la tira de LEDs, brillos
+  (también el de noche, cuando el coche lleva las luces encendidas), apagado
+  de la tira sin juego, y el modo y punto de mordida de las **palancas de
+  embrague**
+- **Configuración de las RPM**: cómo se comporta la barra de revoluciones
+  (modo, llenado, reinicio al cambiar de marcha) y el umbral de cada LED.
+  Puede ajustarse sola al régimen real de cada coche
+
+<p align="center"><img src="screenshots/rim-rpm.png" alt="Aro: configuración de la barra de RPM" width="800"></p>
+
+- **Asignación de luces**: qué enciende cada LED. Banderas, TC/ABS/DRS/ERS,
+  limitador y pit lane, coches cerca, barras de freno, acelerador y
+  combustible... cada efecto con su rango de LEDs, sus colores y su estilo
+  (fijo, parpadeo, respiración, desplazamiento). Se agrupan en carpetas y se
+  guardan en perfiles por juego y por coche
+
+<p align="center"><img src="screenshots/rim-lights.png" alt="Aro: asignación de luces por eventos" width="800"></p>
+
+La matriz de botones y los encoders del aro funcionan como botones de mando
+normales, y el aro recuerda su brillo aunque arranque sin PC.
+
+### Pedalera (VH Axis)
+
+Una sola página con los tres pedales, acelerador, freno y embrague, y arriba
+la **traza en vivo** de los tres.
+
+<p align="center"><img src="screenshots/pedals.png" alt="Pedalera: curvas de respuesta de los tres pedales" width="800"></p>
+
+- **Curva de respuesta** arrastrable por pedal, con preajustes, zona muerta e
+  inversión del sentido
+- **Calibración guiada**: reposo y fondo de cada pedal. El freno se calibra
+  en **kilos** gracias a la célula de carga
+- Lo que se cambia se guarda solo en la EEPROM de la pedalera. Los pedales se
+  leen a unos 1000 Hz con filtrado del ruido del sensor
 
 ### Dash
 
-Tableros en el monitor que elijas, con **galería y editor integrado**: textos,
-agujas, barras, gauges e imágenes, con deshacer y vista previa en vivo. Trae
-**20 dashes listos** (GT3, F1, Formula Alpha 2026...) y se pueden exportar e
-importar en un `.zip`.
-
 <p align="center"><img src="screenshots/dash-gallery.png" alt="Galería de dashes" width="800"></p>
+
+- **Galería**: los dashes disponibles, **20 de serie** (GT3, F1, Formula
+  Alpha 2026...). Se elige el monitor y se le da a *Reproducir*. Un **móvil**
+  también puede ser una pantalla: se vincula con un código QR. Los dashes se
+  exportan e importan en un `.zip`
+- **Editor**: se diseña un dash desde cero o se retoca uno existente. A la
+  izquierda, la caja de herramientas: textos, gauges lineales, circulares y de
+  arco, agujas, barras segmentadas, luces de cambio, neumáticos, mapa de
+  pista, posiciones, delta de tiempo, radar de coches cerca, gráficas,
+  imágenes, vídeo y páginas web. En el centro el lienzo con sus pantallas
+  (un dash puede tener varias, que se pasan con los botones del aro) y a la
+  derecha la jerarquía de elementos y sus propiedades. Admite fórmulas y
+  canales calculados, deshacer, y se prueba en vivo en el monitor del dash
+
+<p align="center"><img src="screenshots/dash-editor.png" alt="Editor de dashes" width="800"></p>
+
+- **Menú del dash**: un dash especial que se abre con una combinación de
+  botones del aro para cambiar ajustes sin soltar el volante. Puede lanzar
+  macros: varias pulsaciones seguidas (por ejemplo, mapa de motor y modo de
+  despliegue a la vez), comprobando por telemetría que han entrado
 
 ### Ingeniero de pista
 
-**Te habla mientras conduces**: combustible, gomas, presiones, daños,
-sanciones, rivales, ritmo, spotter y, al cruzar la meta, tu resultado y qué
-mejorar. Elige cuándo hablar para no hacerlo en plena frenada y **se le
-pregunta por voz** con un botón del aro. Qué familias de avisos dice, y cuánto
-habla, se ajusta por separado. Voces en **español e inglés**, todo procesado en
-tu equipo.
+Un ingeniero que **te habla por radio mientras conduces**. Se le pregunta por
+voz con un botón del aro. Todo, la voz y el reconocimiento de lo que dices,
+funciona en tu equipo.
+
+- **Voz**: micrófono y altavoces, el botón para hablarle, la voz que usa
+  (español o inglés) y el efecto de radio
+- **Avisos**: qué te dice, por familias: spotter, combustible, ritmo, gomas,
+  presiones, daños, rivales, tiempo, estrategia, boxes, el entrenador de
+  conducción y el resultado al cruzar la meta. Cada familia se puede callar o
+  hacer más habladora por separado, y la **personalidad** marca el tono
+  general. Elige cuándo hablar para no hacerlo en plena frenada
 
 <p align="center"><img src="screenshots/engineer-alerts.png" alt="Avisos del ingeniero por familias" width="800"></p>
 
-Incluye una **calculadora de estrategia** con estrategias guardadas por coche y
-circuito: compara opciones de paradas según el reglamento de la carrera
-(paradas obligatorias con ventana, juegos de gomas, repostaje, varios
-pilotos), permite mover las paradas a mano y muestra la gasolina y el ritmo
-vuelta a vuelta. La estrategia elegida es la que el ingeniero sigue en
-carrera, llamándote a boxes en la vuelta que toca.
+- **Estrategia**: una calculadora de estrategia con tus estrategias guardadas
+  por coche y circuito. Compara opciones de paradas según el reglamento de la
+  carrera (paradas obligatorias con ventana, juegos de gomas, repostaje,
+  varios pilotos), deja mover las paradas a mano y muestra la gasolina y el
+  ritmo vuelta a vuelta. Dentro tiene sus propias pestañas: *Carrera* (los
+  datos: duración, ritmo, consumo, depósito, boxes, gomas), *Reglamento*,
+  *Tandas* (qué se hace en cada parada) y *Clasificación* (cuánta gasolina
+  echar). La estrategia que eliges es la que el ingeniero sigue en carrera,
+  llamándote a boxes en la vuelta que toca. Con *Medir en pista*, en unos
+  libres, el ingeniero te pide por radio lo que hay que rodar y la rellena con
+  tus números
 
 <p align="center"><img src="screenshots/strategy.png" alt="Estrategia de carrera" width="800"></p>
 
 ### Análisis
 
-Tus sesiones grabadas, canal a canal, al estilo de **MoTeC i2**: vueltas,
-sectores y curvas, comparación contra una vuelta de referencia y zoom común a
-todas las gráficas.
+Cada sesión que corres se graba sola. Aquí se abren, al estilo de **MoTeC
+i2**.
+
+- **Sesiones**: la lista de grabaciones con buscador y filtros por juego,
+  coche y circuito. Al lado, el trazado, los tiempos y las condiciones de la
+  sesión elegida
+- Al abrir una, cuatro pestañas de hojas: **Base** (comparar vueltas, delta,
+  piloto, velocidad de ruedas, subviraje y sobreviraje, fuerzas,
+  histogramas), **Vehículo** (neumáticos, ABS, frenos, suspensión, tracción,
+  mapa motor y el estado del coche), **Suspensión** (cada esquina, alturas y
+  barras estabilizadoras) y **Circuito** (el trazado pintado con la marcha,
+  la velocidad o la frenada)
+- Arriba, la vuelta, los sectores y las curvas para saltar a cada tramo; se
+  compara contra una vuelta de referencia y el zoom es común a todas las
+  gráficas
 
 <p align="center"><img src="screenshots/analysis.png" alt="Análisis de una vuelta canal a canal" width="800"></p>
 
-### La aplicación
+### Ajustes
 
-<p align="center"><img src="screenshots/home.png" alt="Inicio: lanzador de juegos y estado de los periféricos" width="800"></p>
+<p align="center"><img src="screenshots/settings.png" alt="Ajustes de la aplicación" width="800"></p>
+
+- **Aplicación**: idioma (español o inglés), modo oscuro o claro, arrancar
+  con Windows o minimizado, seguir en segundo plano al cerrar, reconexión
+  automática de los periféricos y aviso de actualizaciones. También el
+  límite de grabaciones guardadas, el asistente de configuración, el menú del
+  dash y la **copia de seguridad** de todos los ajustes y perfiles en un solo
+  fichero
+- **Telemetría**: los datos que está mandando el juego ahora mismo, variable
+  a variable, para comprobar que llegan
+
+### Juegos compatibles
 
 **Telemetría de 18 juegos**: Assetto Corsa, ACC, AC EVO, AC Rally, Le Mans
 Ultimate, iRacing, RaceRoom, Automobilista 1 y 2, rFactor 2, F1 (2023 a 2025),
 DiRT Rally 2.0, EA WRC, BeamNG y los simuladores de camiones.
-
-**Perfiles por tipo de coche** (Formula, GT3, GT2, Hypercar, Rally...), con
-opción de que se apliquen solos al detectar el juego.
-
-**Copia de seguridad completa**: exporta e importa todos los ajustes y perfiles
-en un solo fichero.
-
-Modo oscuro y claro · español e inglés · conexión y reconexión automáticas ·
-ventana sin marco con estética propia.
 
 ## Hardware
 
